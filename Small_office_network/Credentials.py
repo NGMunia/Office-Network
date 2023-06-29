@@ -15,3 +15,4 @@ while True:
         username =   input("Username: ")
         password = getpass("password: ")
         secret   = getpass("secret: ")
+        
