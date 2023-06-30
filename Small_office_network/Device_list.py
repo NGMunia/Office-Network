@@ -25,4 +25,4 @@ core =  {
             'username': Credentials.username,
             'password': Credentials.password,
             'secret': Credentials.secret
-        }        
+        } 

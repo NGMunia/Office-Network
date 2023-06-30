@@ -24,4 +24,3 @@ with open('/home/munia/Scripts/Small_office_network/Devices.csv','w',newline='')
 
 
 
-
