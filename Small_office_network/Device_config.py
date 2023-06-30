@@ -114,7 +114,23 @@ def common_configs():
                    'clock timezone GMT +3',
                    'service timestamps log datetime localtime year',
                    'service timestamps debug datetime locatime year']
-        snmp    = ['ip']
+        snmp    = [
+                   'ip access-list standard SNMP',
+                   'permit host 192.168.30.254',
+                   'snmp-server community devices_snmp ro SNMP',
+                   'snmp-server system-shutdown',
+                   'snmp-server host 192.168.30.254 version 2c devices_snmp']
+        syslog  = [
+                   'logging monitor informational',
+                   'logginh host 192.168.30.254',
+                   'logging trap']
+        
+        for commands in ntp_con, snmp, syslog:
+            rprint(conn.send_config_set(commands)+'\n')
+            conn.save_config()
+common_configs()  
+        
+      
 
 
 
