@@ -1,0 +1,57 @@
+
+# R3 SPOKE CONFIGURATION:
+
+ interface Tunnel10
+ ip address 172.31.10.30 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication dmvpn
+ ip nhrp network-id 10
+ ip nhrp nhs 172.31.10.1 nbma 44.67.28.2 multicast
+ ip nhrp registration no-unique
+ tunnel source Ethernet0/1
+ tunnel mode gre multipoint
+ tunnel key 10
+
+ interface Tunnel20
+ ip address 172.31.20.30 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication dmvpn
+ ip nhrp network-id 20
+ ip nhrp nhs 172.31.20.1 nbma 32.19.86.2 multicast
+ ip nhrp registration no-unique
+ tunnel source Ethernet0/1
+ tunnel mode gre multipoint
+ tunnel key 20
+
+
+
+#R4 SPOKE CONFIGURATION:
+
+ interface Tunnel10
+ ip address 172.31.10.40 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication dmvpn
+ ip nhrp network-id 10
+ ip nhrp nhs 172.31.10.1 nbma 44.67.28.2 multicast
+ ip nhrp registration no-unique
+ tunnel source Ethernet0/1
+ tunnel mode gre multipoint
+ tunnel key 10
+
+ interface Tunnel20
+ ip address 172.31.20.40 255.255.255.0
+ no ip redirects
+ ip mtu 1400
+ ip nhrp authentication dmvpn
+ ip nhrp network-id 20
+ ip nhrp nhs 172.31.20.1 nbma 32.19.86.2 multicast
+ ip nhrp registration no-unique
+ tunnel source Ethernet0/1
+ tunnel mode gre multipoint
+ tunnel key 20
+
+
+     
