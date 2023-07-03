@@ -11,7 +11,6 @@ from rich import print as rprint
 #  - IPSLA
 #  - Object tracking
 
-
 conn = ConnectHandler(**R1)
 conn.enable()
 
@@ -60,6 +59,7 @@ eigrp_config    = ['router eigrp DMVPN-EIGRP',
                    'passive-interface']
 for commands in ip_sla_config, object_track, hsrpv2_commands,tunnel_config, eigrp_config:
     rprint(conn.send_config_set(commands)+'\n')
+conn.save_config()
 
 
 
@@ -117,6 +117,8 @@ eigrp_config    = ['router eigrp DMVPN-EIGRP',
                    'passive-interface']
 for commands in ip_sla_config, object_track, hsrpv2_commands, tunnel_config, eigrp_config:
     rprint(conn.send_config_set(commands)+'\n')
+conn.save_config()
+
 
 
 
@@ -145,12 +147,13 @@ for devices in R3, R4:
                  'ip flow egress',
                  'ip flow-top-talkers',
                  'top 5',
-                 'sort-by bytes']
-    
+                 'sort-by bytes']   
     for commands in lan_conf, netflow:
         rprint(conn.send_config_set(commands)+'\n')
-        conn.save_config()
+conn.save_config()
     
+
+
 
 #Common Configs
 #  - SNMP
@@ -173,8 +176,12 @@ for devices in R1, R2, R3, R4, HQ_SW1, HQ_SW2, HQ_SW3, BR_SW1, BR_SW2:
     banner =  ['banner motd ^',
                ("*"*33),
                '    Python Network Automation   ',
-               ("*"*33),'^']
-    
+               ("*"*33),'^',
+               'line console 0',
+               'motd-banner',
+               'line vty 0 4',
+               'motd-banner']
     for commands in snmp, syslog, banner:
         rprint(conn.send_config_set(commands)+'\n')
+conn.save_config()
 
