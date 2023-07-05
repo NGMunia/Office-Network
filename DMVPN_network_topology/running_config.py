@@ -2,11 +2,7 @@
 #Making backup files of the running-config:
 
 from Device_list import R1, R2, R3, R4, HQ_SW1, HQ_SW2, HQ_SW3, BR_SW1, BR_SW2
-from datetime import datetime
 from netmiko import ConnectHandler
-
-
-time = datetime.now().replace(microsecond=0)
 
 for routers in R1, R2, R3, R4:
     print(f'Connecting to Router {routers.get("ip")}...')
