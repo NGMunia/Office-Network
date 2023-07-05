@@ -59,7 +59,7 @@ eigrp_config    = ['router eigrp DMVPN-EIGRP',
                    'passive-interface']
 for commands in ip_sla_config, object_track, hsrpv2_commands,tunnel_config, eigrp_config:
     rprint(conn.send_config_set(commands)+'\n')
-conn.save_config()
+    conn.save_config()
 
 
 
@@ -117,7 +117,7 @@ eigrp_config    = ['router eigrp DMVPN-EIGRP',
                    'passive-interface']
 for commands in ip_sla_config, object_track, hsrpv2_commands, tunnel_config, eigrp_config:
     rprint(conn.send_config_set(commands)+'\n')
-conn.save_config()
+    conn.save_config()
 
 
 
@@ -150,7 +150,7 @@ for devices in R3, R4:
                  'sort-by bytes']   
     for commands in lan_conf, netflow:
         rprint(conn.send_config_set(commands)+'\n')
-conn.save_config()
+        conn.save_config()
     
 
 
@@ -183,5 +183,5 @@ for devices in R1, R2, R3, R4, HQ_SW1, HQ_SW2, HQ_SW3, BR_SW1, BR_SW2:
                'motd-banner']
     for commands in snmp, syslog, banner:
         rprint(conn.send_config_set(commands)+'\n')
-conn.save_config()
+        conn.save_config()
 
