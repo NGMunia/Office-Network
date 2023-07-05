@@ -16,7 +16,7 @@ for routers in R1, R2, R3, R4:
     ip = routers.get('ip')
     output = conn.send_command('show run')+'\n'
     
-    with open("RTR_"+"_"+ip+"_"+str(time),"w")as f:
+    with open("RTR_"+"_"+ip,"w")as f:
         f.write(output)
         
 for switches in  HQ_SW1, HQ_SW2, HQ_SW3, BR_SW1, BR_SW2:
@@ -27,5 +27,5 @@ for switches in  HQ_SW1, HQ_SW2, HQ_SW3, BR_SW1, BR_SW2:
     ip = switches.get('ip')
     output = conn.send_command('show run')
     
-    with open("SW_"+"_"+ip+"_"+str(time),"w")as f:
+    with open("SW_"+"_"+ip,"w")as f:
         f.write(output)
