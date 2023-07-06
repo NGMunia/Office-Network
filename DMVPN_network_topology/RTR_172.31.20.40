@@ -7,14 +7,14 @@ service timestamps debug datetime msec
 service timestamps log datetime msec
 no service password-encryption
 !
-hostname R3-Spoke-BR1
+hostname R4-Spoke-BR2
 !
 boot-start-marker
 boot-end-marker
 !
 !
 logging monitor informational
-enable secret 5 $1$tARI$ZYfRojxpCkUcCF/fQw/NL/
+enable secret 5 $1$feuX$TblxvRtfqnKiDKPA1KFwR.
 !
 aaa new-model
 !
@@ -70,7 +70,7 @@ multilink bundle-name authenticated
 cts logging verbose
 !
 !
-username Automation secret 8 $8$94h/jKiZ0wT5LX$3GORzz8yJNMFrJFJ3c0FygIYJbC0pqG1kLrS/nJv5lQ
+username Automation secret 8 $8$LqRBE4.qiK905X$pXK9PLtPWruqG7CEMUXJmnoGnQfHKeJ2nAkRjBHDENo
 !
 redundancy
 !
@@ -91,7 +91,7 @@ ip ssh version 2
 !
 !
 interface Tunnel10
- ip address 172.31.10.30 255.255.255.0
+ ip address 172.31.10.40 255.255.255.0
  no ip redirects
  ip mtu 1400
  ip nhrp authentication dmvpn
@@ -103,7 +103,7 @@ interface Tunnel10
  tunnel key 10
 !
 interface Tunnel20
- ip address 172.31.20.30 255.255.255.0
+ ip address 172.31.20.40 255.255.255.0
  no ip redirects
  ip mtu 1400
  ip nhrp authentication dmvpn
@@ -117,15 +117,15 @@ interface Tunnel20
 interface Ethernet0/0
  no ip address
 !
-interface Ethernet0/0.30
- encapsulation dot1Q 30
- ip address 10.1.30.1 255.255.255.0
+interface Ethernet0/0.40
+ encapsulation dot1Q 40
+ ip address 10.1.40.1 255.255.255.0
  ip helper-address 10.1.20.254
  ip flow ingress
  ip flow egress
 !
 interface Ethernet0/1
- ip address 56.57.58.2 255.255.255.252
+ ip address 72.73.74.2 255.255.255.252
 !
 interface Ethernet0/2
  no ip address
@@ -205,14 +205,14 @@ router eigrp DMVPN-EIGRP
 ip forward-protocol nd
 !
 ip flow-export version 9
-ip flow-export destination 10.1.20.254 9995
+ip flow-export destination 10.1.20.254 9996
 ip flow-top-talkers
  top 5
  sort-by bytes
 !
 no ip http server
 no ip http secure-server
-ip route 0.0.0.0 0.0.0.0 56.57.58.1
+ip route 0.0.0.0 0.0.0.0 72.73.74.1
 !
 ip access-list standard SNMP_ACL
  permit 10.1.20.254
@@ -253,4 +253,3 @@ line vty 0 4
 !
 !
 end
-
