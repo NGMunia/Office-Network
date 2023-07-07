@@ -5,6 +5,7 @@ from netmiko import ConnectHandler
 from rich import print as rprint
 
 
+
 with open('/home/munia/Scripts/DMVPN_network_topology/Inventory.csv','w',newline="") as f:
     write_data = csv.writer(f)
     write_data.writerow(['Hostname','IP-Address','IOS version','Serial-No','System-Image'])
@@ -22,4 +23,3 @@ with open('/home/munia/Scripts/DMVPN_network_topology/Inventory.csv','w',newline
         image    = output.get("running_image")
 
         write_data.writerow([hostname,ip_addr,version,serial,image])
-

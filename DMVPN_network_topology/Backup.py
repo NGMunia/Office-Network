@@ -35,8 +35,7 @@ def backup_conf():
         with open("SW_"+ip,'w') as f:
             f.write(output)
         print('Finished backing up config\n') 
-
-        
+       
 schedule.every().day.at("11:00").do(backup_conf)
 while True:
     schedule.run_pending()
