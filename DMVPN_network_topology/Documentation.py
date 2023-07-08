@@ -34,7 +34,7 @@ with open('/home/munia/Scripts/DMVPN_network_topology/VLANS.csv','w') as f:
         conn = ConnectHandler(**switches)
         conn.enable()
 
-        host    = switches.get('ip')
+        host = switches.get('ip')
         list = (conn.send_command('show vlan brief', use_textfsm=True))
         write_data.writerow([host])
 
