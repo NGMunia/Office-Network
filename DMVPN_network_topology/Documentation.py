@@ -24,10 +24,7 @@ with open('/home/munia/Scripts/DMVPN_network_topology/Inventory.csv','w',newline
         image    = output.get("running_image")
 
         write_data.writerow([hostname,ip_addr,version,serial,image])
-    
-    rprint("[green]Inventory Data written successfully![/green]")
-
-    
+    rprint("[green]Inventory Data written successfully![/green]")   
 
 with open('/home/munia/Scripts/DMVPN_network_topology/VLANS.csv','w') as f:
     write_data = csv.writer(f)
@@ -48,7 +45,6 @@ with open('/home/munia/Scripts/DMVPN_network_topology/VLANS.csv','w') as f:
             intf    = output.get('interfaces')
 
             write_data.writerow(['',vlan_id,vname,status,intf])
-
     rprint("[green]VLAN Data written successfully![/green]")
 
 
