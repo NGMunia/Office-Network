@@ -19,7 +19,7 @@ def core_config():
         vlans = ['vlan '+str(v), 'name '+vname]
         intf  = ['int vlan '+str(v),'ip address 192.168.'+str(v)+'.1 255.255.255.0','no shut']
         dhcp  = ['ip dhcp excluded-address 192.168.'+str(v)+'.1  192.168.'+str(v)+'.10' ,
-                 'ip dhcp pool VLAN_'+vname,
+                 'ip dhcp pool '+vname,
                  'network 192.168.'+str(v)+'.0 255.255.255.0',
                  'default-router 192.168.'+str(v)+'.1',
                  'dns-server 8.8.8.8']
