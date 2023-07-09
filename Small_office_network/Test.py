@@ -30,7 +30,7 @@ result = (conn.send_command('show ip interface brief', use_textfsm=True))
 
 @app.get('/Devices/Switches/Interfaces')
 def SwitchInterface():
-    return {f'Host {core.get("ip")} interfaces':result}
+    return {"interfaces":result}
 
 
 
