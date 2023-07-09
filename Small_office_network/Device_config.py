@@ -7,7 +7,8 @@ from rich import print as rprint
 def core_config():
     """CONFIGURING THE CORE SWITCH
     - VLANs
-    - Access control lists"""
+    - Access control lists
+    - DHCP"""
     rprint(f'[yellow]{core_config.__doc__}[/yellow]')
 
     conn = ConnectHandler(**core)
@@ -17,8 +18,13 @@ def core_config():
         vname = input(f'VLAN {v} name: ')
         vlans = ['vlan '+str(v), 'name '+vname]
         intf  = ['int vlan '+str(v),'ip address 192.168.'+str(v)+'.1 255.255.255.0','no shut']
-        for commands in vlans,intf:
-            rprint(conn.send_config_set(commands)+'\n')
+        dhcp  = ['ip dhcp excluded-address 192.168.'+str(v)+'.1  192.168.'+str(v)+'.10' ,
+                 'ip dhcp pool VLAN_'+vname,
+                 'network 192.168.'+str(v)+'.0 255.255.255.0',
+                 'default-router 192.168.'+str(v)+'.1',
+                 'dns-server 8.8.8.8']
+        for commands in vlans,intf,dhcp:
+            rprint(conn.send_config_set(commands)+'\n')    
 
     for i in range(0,4):
         access = input('interface E0/'+str(i)+' access VLAN: ')
