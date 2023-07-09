@@ -26,7 +26,7 @@ with open('/home/munia/Scripts/DMVPN_network_topology/Inventory.csv','w',newline
         write_data.writerow([hostname,ip_addr,version,serial,image])
     rprint("[green]Inventory Data written successfully![/green]")   
 
-with open('/home/munia/Scripts/DMVPN_network_topology/VLANS.csv','w') as f:
+with open('/home/munia/Scripts/DMVPN_network_topology/VLANS.csv','w',newline="") as f:
     write_data = csv.writer(f)
     write_data.writerow(['Hostname','VLAN-ID','Name','status','Interfaces'])
 
