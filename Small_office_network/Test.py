@@ -26,11 +26,11 @@ def DeviceHealth():
 #Interfaces API:
 conn = ConnectHandler(**core)
 conn.enable()
-result = (conn.send_command('show ip interface brief', use_textfsm=True))
+interfaces = (conn.send_command('show ip interface brief', use_textfsm=True))
 
 @app.get('/Devices/Switches/Interfaces')
 def SwitchInterface():
-    return {"interfaces":result}
+    return {"interfaces":interfaces}
 
 
 
@@ -38,9 +38,9 @@ def SwitchInterface():
 #VLANs API
 conn = ConnectHandler(**core)
 conn.enable()
-result = (conn.send_command("show vlan brief",use_textfsm=True))
+vlans = (conn.send_command("show vlan brief",use_textfsm=True))
 
 @app.get('/Devices/Switches/VLANs')
 def SwitchVlans():
-    return result
+    return vlans
 
