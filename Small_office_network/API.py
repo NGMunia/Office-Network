@@ -86,7 +86,6 @@ def delete_vlan(delete : del_vlan_class):
 
     return{"message: VLAN deleted successfully", output}
 
-
     
 
     
