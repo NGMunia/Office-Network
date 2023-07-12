@@ -12,7 +12,7 @@ import requests
 from rich import print as rp
 
 
-#Device-infoo API GET request
+#Device-info API GET request
 url = 'http://192.168.30.100:8000/Devices/info'
 result = requests.get(url).json()
 rp(result)
