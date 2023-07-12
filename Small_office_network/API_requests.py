@@ -34,7 +34,7 @@ for result in result:
       Otherwise, we print an error message along with the actual status code returned by the API.
 
 '''
-url = 'http://192.168.30.100:8000/Devices/Switches/VLANs/create'
+url  = 'http://192.168.30.100:8000/Devices/Switches/VLANs/create'
 
 data =      {
                 'switch_ip': '10.1.1.1',
