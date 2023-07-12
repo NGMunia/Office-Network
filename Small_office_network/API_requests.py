@@ -32,7 +32,6 @@ for result in result:
     - After sending the request, we check the response status code. 
       If it's 200, we assume the request was successful and print the response data. 
       Otherwise, we print an error message along with the actual status code returned by the API.
-
 '''
 url  = 'http://192.168.30.100:8000/Devices/Switches/VLANs/create'
 
@@ -47,4 +46,19 @@ if result.status_code == 200:
 else:
     rp(' Response ',result.status_code,'\n','VLAN '+str(data.get("vlan_ID")), 'not configured')
 
+
+'''
+  DELETE: Deleting VLANS.
+'''
+url  = 'http://192.168.30.100:8000/Devices/Switches/VLANs/remove'
+
+data =  {
+          'switch_ip': '10.1.1.1',
+          'vlan_ID' : 150,
+        }
+result = requests.delete(url,json=data)
+if result.status_code == 200:
+    rp(' Response ',result.status_code,'\n','VLAN '+str(data.get('vlan_ID')),'removed successfully!')
+else:
+    rp(' Response ',result.status_code,'\n','VLAN '+str(data.get("vlan_ID")), 'has not been removed')
 
