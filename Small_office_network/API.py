@@ -1,5 +1,5 @@
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, status
 from netmiko import ConnectHandler
 from Device_list import RTR1, fW1, core
 import ntc_templates
@@ -44,10 +44,11 @@ class create_vlan_class(BaseModel):
     switch_ip : str
     vlan_ID: int
     vlan_name: str
-@app.post('/Devices/Switches/VLANs/create')
+@app.post('/Devices/Switches/VLANs/create', status_code=status.HTTP_201_CREATED)
 def create_vlan(post : create_vlan_class):
     if post.vlan_ID == 1 or (1002 <= post.vlan_ID <= 1005):
-        return {"message": "Invalid VLAN ID"}
+        raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail='Invalid VLAN-ID')
+#        return {"message": "Invalid VLAN ID"}
     else:
         device  = { 
                     'device_type':'cisco_ios',
@@ -69,7 +70,7 @@ def create_vlan(post : create_vlan_class):
 class del_vlan_class(BaseModel):
     switch_ip : str
     vlan_ID: int
-@app.delete('/Devices/Switches/VLANs/remove')
+@app.delete('/Devices/Switches/VLANs/remove', status_code=status.HTTP_204_NO_CONTENT)
 def delete_vlan(delete : del_vlan_class):
     device  =   { 
                     'device_type':'cisco_ios',
