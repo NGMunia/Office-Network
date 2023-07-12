@@ -48,7 +48,6 @@ class create_vlan_class(BaseModel):
 def create_vlan(post : create_vlan_class):
     if post.vlan_ID == 1 or (1002 <= post.vlan_ID <= 1005):
         raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail='Invalid VLAN-ID')
-#        return {"message": "Invalid VLAN ID"}
     else:
         device  = { 
                     'device_type':'cisco_ios',
