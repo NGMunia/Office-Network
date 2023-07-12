@@ -8,8 +8,8 @@ import ntc_templates
 app = FastAPI()
 
 
-#Device-Health API:   
-@app.get('/Devices/health')
+#Devices Info API:   
+@app.get('/Devices/info')
 def DeviceHealth():
     
     output= []
