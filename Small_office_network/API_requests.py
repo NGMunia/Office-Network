@@ -13,6 +13,7 @@ from rich import print as rp
 
 '''
   GET: Getting Device info through API
+    - This will also format the output in a more readable format.
 '''
 url = 'http://192.168.30.100:8000/Devices/info'
 result = (requests.get(url).json())
@@ -49,6 +50,7 @@ else:
 
 '''
   DELETE: Deleting VLANS.
+    - This DELETE  request script will remove resource data (VLAN) on the switch.
 '''
 url  = 'http://192.168.30.100:8000/Devices/Switches/VLANs/remove'
 
