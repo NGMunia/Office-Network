@@ -16,16 +16,12 @@ app = FastAPI()
 @app.get('/Devices/info')
 def Device_Info():
     
-    output= []
-    
-    for devices in RTR1, fW1, core:
-        
+    output= []  
+    for devices in RTR1, fW1, core:   
         conn = ConnectHandler(**devices)
         conn.enable()
-
         result= (conn.send_command('show version',use_textfsm=True))[0]
         output.append(result)
-
     return(output)
 
 
@@ -37,7 +33,6 @@ def get_vlans():
 
     conn = ConnectHandler(**core)
     conn.enable()
-
     result = conn.send_command('show vlan brief', use_textfsm=True)
     return result
 
@@ -63,10 +58,8 @@ def create_vlan(post : create_vlan_class):
                   }
         conn = ConnectHandler(**device)
         conn.enable()
-
         configs = ['vlan '+str(post.vlan_ID),'name '+post.vlan_name]
         output  = conn.send_config_set(configs)
-
         return{"message: VLAN configured successfully", output}
     
 
@@ -87,7 +80,6 @@ def delete_vlan(delete : del_vlan_class):
                 }
     conn = ConnectHandler(**device)
     conn.enable()
-
     configs = ['no vlan '+str(delete.vlan_ID)]
     conn.save_config()
     output  = conn.send_config_set(configs)
