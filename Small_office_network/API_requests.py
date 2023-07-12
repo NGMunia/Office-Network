@@ -7,10 +7,8 @@ HTTP requests methods:
   - DELETE deletes the resource data
 '''
 
-
 import requests
 from rich import print as rp
-
 
 
 '''
@@ -24,7 +22,6 @@ for result in result:
     print("-"*50)
     for key,value in result.items():
         print(f'{key:>15} : {value}')
-
 
 
 '''
