@@ -12,6 +12,7 @@ import requests
 from rich import print as rp
 
 
+
 '''
   GET: Getting Device info through API
 '''
@@ -23,8 +24,6 @@ for result in result:
     print("-"*50)
     for key,value in result.items():
         print(f'{key:>15} : {value}')
-
-
 
 
 
@@ -48,6 +47,5 @@ data =      {
 result = requests.post(url,json=data)
 if result.status_code == 200:
     rp(' Response ',result.status_code,'\n','VLAN '+str(data.get('vlan_ID')),'configured successfully!')
-
 else:
     rp(' Response ',result.status_code,'\n','VLAN '+str(data.get("vlan_ID")), 'not configured')
