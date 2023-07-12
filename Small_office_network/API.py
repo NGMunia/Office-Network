@@ -85,6 +85,8 @@ def delete_vlan(delete : del_vlan_class):
     output  = conn.send_config_set(configs)
 
     return{"message: VLAN deleted successfully", output}
+
+
     
 
     
