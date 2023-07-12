@@ -71,21 +71,24 @@ class del_vlan_class(BaseModel):
     vlan_ID: int
 @app.delete('/Devices/Switches/VLANs/remove', status_code=status.HTTP_204_NO_CONTENT)
 def delete_vlan(delete : del_vlan_class):
-    device  =   { 
+    if delete.vlan_ID == 1 or delete.vlan_ID >= 1002:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="The VLAN-ID you are trying to delete is not configured or can't be deleted")
+    else:
+        device  = { 
                     'device_type':'cisco_ios',
                     'ip': delete.switch_ip,
                     'username':'Automation',
                     'password':'cisco123',
                     'secret':'cisco123'
-                }
-    conn = ConnectHandler(**device)
-    conn.enable()
-    configs = ['no vlan '+str(delete.vlan_ID)]
-    conn.save_config()
-    output  = conn.send_config_set(configs)
+                  }
+        conn = ConnectHandler(**device)
+        conn.enable()
 
-    return{"message: VLAN deleted successfully", output}
+        configs = ['no vlan '+str(delete.vlan_ID)]
+        conn.send_config_set(configs)
+        conn.save_config()
 
-    
+        return {"Message":"VLAN "+str(delete.vlan_ID)+" has been deleted"}
 
+        
     
