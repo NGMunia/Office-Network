@@ -29,7 +29,6 @@ def Device_Info():
     return(output)
 
 
-
 '''
   GET getting VLANs on a Switch:
 '''
@@ -41,8 +40,6 @@ def get_vlans():
 
     result = conn.send_command('show vlan brief', use_textfsm=True)
     return result
-
-
 
 
 '''
@@ -72,7 +69,6 @@ def create_vlan(post : create_vlan_class):
 
         return{"message: VLAN configured successfully", output}
     
-
 
 ''''
   DELETE: Deleting VLANs on a switch:
