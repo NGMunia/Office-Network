@@ -45,8 +45,7 @@ result = requests.post(url,json=data)
 if result.status_code == 200:
     rp(' Response ',result.status_code,'\n','VLAN '+str(data.get('vlan_ID')),'configured successfully!')
 else:
-    rp(' Response ',result.status_code,'\n','VLAN '+str(data.get("vlan_ID")), 'not configured')
-
+    rp(' Response ',result.status_code,'\n','VLAN '+str(data.get("vlan_ID")), 'not configured.\n Ethernet VLAN-ID should range between 2-1001')
 
 '''
   DELETE: Deleting VLANS.
