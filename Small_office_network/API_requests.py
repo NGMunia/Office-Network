@@ -46,3 +46,5 @@ if result.status_code == 200:
     rp(' Response ',result.status_code,'\n','VLAN '+str(data.get('vlan_ID')),'configured successfully!')
 else:
     rp(' Response ',result.status_code,'\n','VLAN '+str(data.get("vlan_ID")), 'not configured')
+
+
