@@ -4,7 +4,7 @@ from Device_list import core, RTR1, fW1
 from netmiko import ConnectHandler
 from rich import print as rprint
 
-with open('/home/munia/Scripts/Small_office_network/Devices.csv','w',newline='') as f:
+with open('/home/munia/Scripts/Small_office_network/Documentation/Devices.csv','w',newline='') as f:
     write_data = writer(f)
     write_data.writerow(['Hostname','IP address','Version','Image','Serial-No','Uptime'])
 

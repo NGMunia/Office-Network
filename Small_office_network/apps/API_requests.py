@@ -11,6 +11,7 @@ import requests
 from rich import print as rp
 
 
+
 '''
   GET: Getting Device info through API
     - This will also format the output in a more readable format.
@@ -23,6 +24,8 @@ for result in result:
     print("-"*50)
     for key,value in result.items():
         print(f'{key:>15} : {value}')
+
+
 
 
 '''
@@ -46,6 +49,9 @@ if result.status_code == 200:
     rp(' Response ',result.status_code,'\n','VLAN '+str(data.get('vlan_ID')),'configured successfully!')
 else:
     rp(' Response ',result.status_code,'\n','VLAN '+str(data.get("vlan_ID")), 'not configured.\n Ethernet VLAN-ID should range between 2-1001')
+
+
+
 
 '''
   DELETE: Deleting VLANS.
